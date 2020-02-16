@@ -7,7 +7,7 @@
     if(sanitizeInputs($name, $content)) {
         
         //Declare variables
-        $db = mysqli_connect('localhost', 'web', 'webaccess', 'bulletinBoard');
+        $db = mysqli_connect('localhost', '*', '*', 'bulletinBoard');
         $query = "CALL bulletinBoard.sp_insert_post(?, ?);";
         $stmt = $db->prepare($query);
         $stmt->bind_param('ss', $name, $content);
