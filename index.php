@@ -45,7 +45,7 @@
                     <?php
                     
                     //Declare variables
-                    $db = mysqli_connect('localhost', 'web', 'webaccess', 'bulletinBoard');
+                    $db = mysqli_connect('localhost', '*', '*', 'bulletinBoard');
                     $query = "CALL bulletinBoard.sp_get_views();";
 
                     //Test for any connection errors
@@ -256,7 +256,7 @@
                     <input type='button' id='btnAddPost' value='Add a Post' />					
                     <?php
                     //Declare variables
-                    $db = mysqli_connect('localhost', 'web', 'webaccess', 'bulletinBoard');
+                    $db = mysqli_connect('localhost', '*', '*', 'bulletinBoard');
                     $query = "CALL bulletinBoard.sp_select_all_posts();";
 
                     //Test for any connection errors
