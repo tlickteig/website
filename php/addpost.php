@@ -5,9 +5,13 @@
     $content = isset($_GET["content"]) ? $_GET["content"] : "|";
     
     if(sanitizeInputs($name, $content)) {
-        
+		
+		//Prevent cross site scripting
+		$name = str_replace("<", "&#60", $name);
+		$content = str_replace("<", "&#60", $content);
+		
         //Declare variables
-        $db = mysqli_connect('localhost', '*', '*', 'bulletinBoard');
+        $db = mysqli_connect('localhost', 'web', 'webaccess', 'bulletinBoard');
         $query = "CALL bulletinBoard.sp_insert_post(?, ?);";
         $stmt = $db->prepare($query);
         $stmt->bind_param('ss', $name, $content);
