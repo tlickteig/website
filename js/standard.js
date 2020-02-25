@@ -33,7 +33,7 @@ function startjQueryUI() {
     $("#dvUsefulChartContainer").accordion({
         active: false,
         collapsible: true
-    });
+    });          
     
     $("#dvAddPost").dialog({
         autoOpen: false,
@@ -158,6 +158,61 @@ function renderCharts() {
         width: 800
     });
     personalCalculators.render();
+    
+    var programmingLanguages = new CanvasJS.Chart("dvNumberOfProgrammingLanguages", {
+        
+        title: {
+            text: "Total Number of Programming Languages I Know, Yearly"
+        },
+        data: [{
+            type: "column",
+            dataPoints: [
+                {label: "2016", y: 1},
+                {label: "2017", y: 2},
+                {label: "2018", y: 5},
+                {label: "2019", y: 9},
+                {label: "2020", y: 10}
+            ]
+        }],
+         axisX: {
+            title: "Year"
+        },
+        axisY: {
+          title: "Number of Programming Languages"  
+        },
+        width: 800
+    });
+    programmingLanguages.render();
+    
+    var sixtyWattLightBulbs = new CanvasJS.Chart("dvSixtyWattLightBulbs", {
+        
+        title: {
+            text: "Average Wattage of Sixty Watt Light Bulbs, Yearly"
+        },
+        data: [{
+            type: "column",
+            dataPoints: [
+                {label: "1930", y: 60},
+                {label: "1940", y: 60},
+                {label: "1950", y: 60},
+                {label: "1960", y: 60},
+                {label: "1970", y: 60},
+                {label: "1980", y: 60},
+                {label: "1990", y: 60},
+                {label: "2000", y: 60},
+                {label: "2010", y: 60},
+                {label: "2020", y: 60}
+            ]
+        }],
+         axisX: {
+            title: "Year"
+        },
+        axisY: {
+          title: "Number of Watts"  
+        },
+        width: 800
+    });
+    sixtyWattLightBulbs.render();
     
     var iowaWeather = new CanvasJS.Chart("dvIowaWeather", {
         

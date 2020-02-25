@@ -7,7 +7,7 @@ def main(args):
     output = ""
     lat = args[1]
     long = str(float(args[2]) * -1)
-    key = "*****"
+    key = "90831826ada8b61fa9616f69136dc499"
 
     #Primary program logic
     try:
