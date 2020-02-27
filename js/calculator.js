@@ -21,9 +21,37 @@ $(document).ready(function() {
     $(".calcConst").click(function() {
         constantButtonClick(this);
     });
-    $(".calcNumMod").click(function() {
-        numberModButtonClick(this);
+    
+    $("#calcBtnDecimal").click(function() {
+       if(operator === "" && operandOne.indexOf(".") === -1) {
+           operandOne = operandOne + ".";
+           printToDisplay(operandOne);
+       } else if(operandTwo.indexOf(".") === -1) {
+           operandTwo = operandTwo + ".";
+           printToDisplay(operandTwo);
+       }
     });
+   
+    $("#calcBtnNegative").click(function() {
+        if(operator === "") {
+            if(operandOne.indexOf("-") === -1) {
+                operandOne = "-" + operandOne;
+                printToDisplay(operandOne);
+            } else {
+                operandOne = operandOne.substring(1, operandOne.length);
+                printToDisplay(operandOne);
+            }
+        } else {
+            if(operandTwo.indexOf("-") === -1) {
+                operandTwo = "-" + operandTwo;
+                printToDisplay(operandTwo);
+            } else {
+                operandTwo = operandTwo.substring(1, operandTwo.length);
+                printToDisplay(operandTwo);
+            }
+        }
+    });
+   
     $(".calcOther").click(function() {
         otherButtonClick(this);
     });
@@ -122,39 +150,6 @@ function numberButtonClick(button) {
     } else {
         operandTwo = operandTwo + $(button).attr("value");
         printToDisplay(operandTwo);
-    }
-}
-
-function numberModButtonClick(button) {
-    
-    var target;
-    if(operator === "") {
-        target = operandOne;
-    } else {
-        target = operandTwo;
-    }
-        
-    if($(button).attr("value") === ".") {
-        target = target + ".";
-        /*
-        if(target.indexOf(".") === -1) {
-            target = target + ".";
-        }
-        */
-    } else {
-        if(target.indexOf("-") > -1) {
-            target = target.substring(1, target.length);
-        } else {
-            target = "-" + target;
-        }
-    }
-    
-    if(operator === "") {
-        firstOperand = target;
-        printToDisplay(firstOperand);
-    } else {
-        secondOperand = target;
-        printToDisplay(secondOperand);
     }
 }
 

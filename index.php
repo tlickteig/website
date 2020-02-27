@@ -446,14 +446,14 @@
                                 <input type="button" id="calcBtnLog" value="log" class="calcEval"/>
                             </td>
                             <td>
-                                <!-- input type="button" id="calcBtnNegative" value="±" class="calcNumMod"/> -->
+                                <input type="button" id="calcBtnNegative" value="±" class="calcNumMod"/>
                             </td>
                             <td>
                                 <input type="button" id="calcBtn0" value="0" class="calcNumber"/>
                             </td>
                             
                             <td>
-                                <!-- <input type="button" id="calcBtnDecimal" value="." class="calcNumMod"/> -->
+                                <input type="button" id="calcBtnDecimal" value="." class="calcNumMod"/>
                             </td>
                             <td>
                                 <input type="button" id="calcBtnEval" value="=" class="calcOther"/>
