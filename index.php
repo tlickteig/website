@@ -14,7 +14,8 @@
         <script src="js/meter.js" type="text/javascript"></script>
         <script src="js/calculator.js" type="text/javascript"></script>
     </head>    
-    <body  onload="start()"> 
+    <body  onload="start()">
+<!-- Just a test -->	
         <header>
             <h1>Welcome to the Minivan Master's Lair!</h1>
         </header>
