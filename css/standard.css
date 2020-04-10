@@ -211,6 +211,18 @@ li {
     margin-top: -2em;
 }
 
+#dvChat input[type='text'] {
+    margin: 1em;
+}
+
+#dvChat textarea {
+    margin-left: 1em;
+}
+
+#dvChat input[type='button'] {
+    margin-left: 1em;
+}
+
 #dvEuropeElectricity {
     height: 300px;
     width: 100%;

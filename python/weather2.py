@@ -1,6 +1,5 @@
 import sys
 import requests
-import ast
 
 def main(args):
 
@@ -13,18 +12,18 @@ def main(args):
     #Primary program logic
     try:
         #Get data in json format and catch invalid location error
-        data = get_weather(lat, long, key)        
+        data = get_weather(lat, long, key)
+        if str(data) == "{'code': 400, 'error': 'The given location is invalid.'}":
+            raise Exception("Invalid Location")
         return_output(data)       
     except Exception as e:
-        #return_error(str(e))
-        raise e
+        return_error(str(e))
 
 def get_weather(lat, long, key):
 
-    request = "http://api.weatherbit.io/v2.0/current?units=I&lat=" + lat + "&lon=" + long + "&key=" + key;
+    request = "https://api.darksky.net/forecast/" + key + "/" + lat + "," + long;
     response = requests.get(request)
-    data = str(response.content)[11 : len(str(response.content)) - 15]
-    return ast.literal_eval(data)
+    return response.json()
 
 def return_error(text):
 
@@ -32,47 +31,17 @@ def return_error(text):
     output += "<p>Error: " + text + "</p>"
     print(output)
 
-def get_image(code):
-
-    output = "clear-day"
-
-    if(code[3 : 4] == "d"):
-        output = "partly-cloudy-day"
-    else:
-        output = "partly-cloudy-night"
-        
-    if(code == "c01d"):
-        output = "clear-day"
-    elif(code == "c01n"):
-        output = "clear-night"
-    elif(code[0 : 3] == "c04"):
-        output = "cloudy"
-    elif(code[0 : 3] == "a05"):
-        output = "fog"
-    elif(code == "c02d" or code == "c03d"):
-        output = "partly-cloudy-day"
-    elif(code == "c02n" or code == "c03n"):
-        output = "partly-cloudy-night"
-    elif((["d01", "d02", "d03", "r01", "r02", "r03", "f01", "r04", "r05", "r06"].count(code[0 : 3])) > 0):
-        output = "rain"
-    elif(code[0 : 3] == "s05"):
-        output = "sleet"
-    elif(code[0 : 3] == "s01" or code[0 : 3] == "s02" or code[0 : 3] == "s06"):
-        output = "snow"
-
-    return output
-
 def return_output(data):
 
     #Parse weather information
-    icon = "images/weather/" + get_image(str(data["weather"]["icon"])) + ".svg"
-    summary = str(data["weather"]["description"])    
-    pressure = str(data["slp"])
-    temperature = str(data["temp"])
-    humidity = str(data["rh"])
-    windspeed = str(data["wind_spd"])
-    direction = str(data["wind_dir"])
-    city = str(data["city_name"])
+    icon = "images/weather/" + str(data["currently"]["icon"]) + ".svg"
+    summary = str(data["currently"]["summary"])
+    pressure = str(data["currently"]["pressure"])
+    temperature = str(data["currently"]["temperature"])
+    humidity = str(float(str(data["currently"]["humidity"])) * 100)
+    windspeed = str(data["currently"]["windSpeed"])
+    direction = str(data["currently"]["windBearing"])
+    timezone = str(data["timezone"])
 
     output = "<table>"
     output += "<tr>"
@@ -114,7 +83,7 @@ def return_output(data):
     output += "</table>"    
     output += "<style>" + build_styling() + "</style>"
     output += "<script>" + build_javascript(temperature, windspeed, humidity, pressure, direction) + "</script>"
-    output += "<p>Powered by <a href='https://www.weatherbit.io/'>Weatherbit</a>, images from <a href='https://www.flaticon.com/categories/weather'>FlatIcon.com</a>, City: " + city + "</p>"
+    output += "<p>Powered by <a href='https://darksky.net/'>Darksky</a>, images from <a href='https://www.flaticon.com/categories/weather'>FlatIcon.com</a>, Timezone: " + timezone + "</p>"
     output += ""
         
     print(output)  
