@@ -385,7 +385,6 @@ function switchTabs() {
 function navBarManager(element) {
 
     //Get the href attr of the element
-    //element = element.innerHTML;
     var startIndex = element.indexOf('="');
     var endIndex = element.indexOf('" ');
     var href = element.substring(startIndex + 2, endIndex);
@@ -398,7 +397,8 @@ function navBarManager(element) {
         //Clear all the div elements
         var div = ["#dvAbout", "#dvUnixClock", "#dvWorldClock", "#dvWeather",
             "#dvBulletinBoard", "#dvFortuneTeller", "#dvHTMLPlayground",
-            "#dvJsThing", "#dvUsefulCharts", "#dvCalculator"];
+            "#dvJsThing", "#dvUsefulCharts", "#dvCalculator", "#dvChat", 
+            "#dvPlotter"];
         for (var i = 0; i < div.length; i++) {
             $(div[i]).hide();
         }

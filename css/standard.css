@@ -70,7 +70,7 @@ input[type='submit'] {
     font-family: 'Patua One', cursive;
 }
 
-input[type='text'] {
+input[type='text'], input[type='number'] {
     border: 1px solid #c5c5c5;
     background-color: #f6f6f6;
     padding-left: 5px;
@@ -201,6 +201,16 @@ li {
     margin-bottom: 1em;
 }
 
+#txtPlotterInput {
+    margin-bottom: 1em;
+    margin-left: -.2em;
+}
+
+#numPlotterZoom {
+    width: 5em;
+    margin-left: .25em;
+}
+
 #dvCustomHTMLWindow {
     border: 1px solid #c5c5c5;
     border-radius: 5px;
@@ -209,6 +219,13 @@ li {
     height: 20em;
     margin-left: -8em;
     margin-top: -2em;
+}
+
+#dvPlotterOutput {
+    margin-top: 1em;
+    border: 1px solid #c5c5c5;
+    border-radius: 5px;
+    width: 500px;
 }
 
 #dvChat input[type='text'] {
